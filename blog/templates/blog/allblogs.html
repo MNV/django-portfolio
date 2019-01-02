@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center pt-3">Welcome to Michael's Blog</h1>
+    <br/>
+    <br/>
+    <h2>Latest Posts</h2>
+    <hr/>
+
+    {% for blog in blogs.all %}
+
+        <h3><a href="{% url 'detail' blog.id %}" class="text-dark">{{ blog.title }}</a></h3>
+        <p>{{ blog.pub_date_pretty }}</p>
+        <p><img src="{{ blog.image.url }}" class="img-fluid" width="200" height="200" alt="blog image"></p>
+        <p>{{ blog.summary }} <a href="{% url 'detail' blog.id %}">Read more</a></p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
